@@ -1,0 +1,35 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");    
+    pincel.fillStyle = "lightpink";
+    pincel.fillRect(0,0,600,400); 
+    var colores = ["lightblue", "lightyellow", "white"];
+    var indiceColorActual =0; //comienza con lightblue
+
+    function dibujarCirculo(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;    
+        pincel.fillStyle = colores[indiceColorActual];
+        pincel.beginPath();
+        pincel.arc(x,y,25,0,2*3.14);
+        pincel.fill();
+        console.log(x + "," + y);        
+    }
+
+    pantalla.onclick = dibujarCirculo;
+
+    function alterarColor() {
+        indiceColorActual++;
+        if (indiceColorActual>=colores.length){
+            indiceColorActual = 0;
+        }
+        alert("Cambió el color a " + indiceColorActual);
+        return false; //menú de colores de canvas no es exhibido
+    }
+
+    pantalla.oncontextmenu = alterarColor;
+
+</script> 

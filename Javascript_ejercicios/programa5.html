@@ -1,0 +1,78 @@
+<meta charset="UTF-8">
+
+<h1>¡Dispara contra el objetivo! </h1>
+
+
+<canvas width="600" height="600"> </canvas>
+
+<script>
+	
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	pincel.fillStyle = "lightyellow"; 
+	pincel.fillRect(0,0, 600,400);
+
+	var radio = 10;
+	var xaleatorio;
+	var yaleatorio;
+
+	function diseniarCircunferencia(x,y,radio, color){
+
+		pincel.fillStyle = color;
+		pincel.beginPath();
+		pincel.arc(x,y,radio, 0, 2*Math.PI);
+		pincel.fill();
+	}
+
+	function limpiarPantalla(){
+
+		pincel.clearRect(0,0,600,400);
+	}
+
+	var x=0
+	
+	function diseniarObjetivo(x,y) {
+
+		diseniarCircunferencia(x,y,radio+35,"lightpink");
+		diseniarCircunferencia(x,y,radio+15,"white");
+		diseniarCircunferencia(x,y,radio,"lightpink");
+	}
+
+	function sortearposicion(maximo){
+
+		return Math.floor(Math.random()*maximo);
+	}
+
+	function actualizarPantalla(){
+
+		margenX = 600 - (radio+35);
+		margenY = 400 - (radio+35);
+		limpiarPantalla();
+		xaleatorio=sortearposicion(margenX);
+		yaleatorio=sortearposicion(margenY);
+		diseniarObjetivo(xaleatorio, yaleatorio);		
+		x++;
+	
+	}
+
+	setInterval(actualizarPantalla,1000);
+
+	function disparar(evento){
+
+		var x = evento.pageX = pantalla.offsetLeft;
+		var y = evento.pageY = pantalla.offsetTop;
+
+		if ((x < xaleatorio + radio) && 
+			(x < xaleatorio - radio) && 
+			(y < yaleatorio + radio) &&
+			(y < yaleatorio - radio)){
+			alert("Tiro certero!");
+		}
+	}
+
+
+	pantalla.onclick = disparar;
+
+
+</script>

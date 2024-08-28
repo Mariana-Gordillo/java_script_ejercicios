@@ -1,0 +1,68 @@
+<meta charset="UTF-8">
+
+<br>
+<h1>PROGRAMA: JUEGO DE ADIVINACIÓN </h1>
+<br>
+<br>
+<script>
+
+	function saltarlinea() {
+
+		document.write ("<br>");
+		document.write ("<br>");
+		document.write ("<br>");
+	}
+
+	function imprimir(frase){
+
+		document.write(frase)
+		saltarlinea();
+
+	}
+
+	var numeroPensado = Math.round(Math.random()*10);
+
+	var intentos = 3;
+	var contador = 1;
+
+
+	while(contador <= intentos){
+
+		var numeroLanzado = parseInt(prompt("Este es un juego de adivinación, he pensado un número, debes adivinar cual es. Ingresa el un número en el que pensaste entre 0 y 10"));
+
+		if (numeroPensado == numeroLanzado){
+
+			alert ("¡ACERTASTE! , y tan solo en el intento " + contador + "  , eres un excelente adivinador. El número pensado era " + numeroPensado);
+			break;
+			
+		}
+	
+
+		else {
+
+			alert("¡Fallaste!, piensa en otro número, anda puede que tengas suerte esta vez");
+		}
+
+		contador++;
+			 
+	}
+
+
+	if (numeroPensado == numeroLanzado){
+
+			imprimir ("¡ACERTASTE! , y tan solo en el intento " + contador + "  , eres un excelente adivinador. El número pensado era " + numeroPensado);
+			
+		}
+	
+
+		else {
+
+			imprimir ("¡FALLASTE!, el número pensado era " + numeroPensado + "Suerte a la proxima ;)");
+		}
+
+	imprimir("Este es el FIN, pero puedes recargar la página y puedes empezar de nuevo")
+
+</script>
+
+
+

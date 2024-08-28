@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<h1>Dibujando con Mar </h1>
+
+
+<canvas width="600" height="600">
+	
+
+</canvas>
+
+<script>
+	function dibujarCuadrado(x,y,color){
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	pincel.fillStyle = color; 
+	pincel.fillRect(x,y, 50,50);
+	pincel.strokeStyle = "blue";
+	pincel.strokeRect(x,y,51,51);
+
+	}
+	
+	var x=0;
+	while (x<600){
+		
+		for (var y=0; y<600; y=y+55){
+		dibujarCuadrado(x,y,"darkorange");
+		}
+		x= x+55;
+
+	}
+	
+
+	// for (var x=0; x< 600; x=x+55){
+	//	dibujarCuadrado(x,0,"darkorange");
+	//	dibujarCuadrado(x,57,"orange");
+	//	dibujarCuadrado(x,115,"darkorange");
+	//}
+
+</script>
